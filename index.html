@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="燈箱效果">  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,700i,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="./index.css">
+  <title>11F - 燈箱效果</title>
+</head>
+<body onload="loadImg()">
+  <div class="wrap">
+    <h1 class="text"><span>FOX</span><span>EVERYWHERE</span></h1>
+    <div id="imgArea" class="foxImgArea"></div>
+  </div>
+  <div id="mask" class="mask">
+    <div class="container">
+      <div class="leftInfo">
+        <div class="num">
+          <span id="currentPage">1</span>
+          <span>/</span>
+          <span id="totalPage">6</span>
+        </div>
+        <div class="description">
+          <span>Have you ever seen the cute fox before?</span>
+          <span class="author"><i>—Erik Mclean</i></span>
+        </div>
+      </div>
+      <div class="lightBox">
+        <i onclick="closeDialog()" class="cross fas fa-times-circle fa-2x"></i>
+        <i onclick="jumpTo(-1)" class="left fas fa-chevron-left fa-2x"></i>
+        <i onclick="jumpTo(1)" class="right fas fa-chevron-right fa-2x"></i>
+        <img id="lightBoxImg" src="./img/fox1.jpg" alt="狐狸">
+      </div>
+    </div>
+  </div>
+  <script src="./index.js"></script>
+</body>
+</html>

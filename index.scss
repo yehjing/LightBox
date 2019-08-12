@@ -1,0 +1,213 @@
+$black:#000000;
+$white:#fff;
+$max-width:1280px;
+@mixin size($w,$h:$w){
+  width: $w;
+  height: $h;
+}
+@mixin font($size,$color:$black){
+  font-family: 'Open Sans', sans-serif;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin large{
+  @media (max-width: 992px) {
+    @content
+  }
+};
+
+@mixin medium{
+  @media (max-width: 768px) {
+    @content
+  }
+};
+
+@mixin small{
+  @media (max-width: 576px) {
+    @content
+  }
+};
+@mixin extraSmall{
+  @media (max-width: 480px) {
+    @content
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.wrap{
+  position: relative;
+  max-width: $max-width;
+  display: flex;
+  margin: 0 auto;
+  @include large{
+    flex-direction: column;
+    align-items: center;
+  }
+  .text{
+    @include font(72px);
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+    text-decoration: underline;
+    padding: 110px 0 110px 16px;
+    border-top:16px solid $black;
+    writing-mode: vertical-rl;
+    margin: 0 85px;
+    @include large{
+      width: 100%;
+      // height: auto;
+      text-align: center;
+      padding: 40px 0;
+      margin: 0;
+      writing-mode:inherit;
+    }
+    @include small{
+      font-size: 60px;
+      margin-bottom: .5em;
+      padding: 0;
+    }
+    @include extraSmall{
+      word-break: break-all;
+      font-size: 3rem;
+      margin-bottom: .5em;
+      padding: 0;
+    }
+  }
+  .foxImgArea{
+    transition: .5s;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    padding-top: 130px;
+    @include large{
+      width: 90%;
+      padding: 0;
+      justify-content:space-around;
+    }
+    figure{
+      position: relative;
+      @include size(255px);
+      overflow: hidden;
+      margin-bottom: 30px;
+      margin-right: 30px;
+      @include large{
+        @include size(320px);
+        margin-right: 0;
+      }
+      @include medium{
+        // @include size(45%);
+        @include size(600px);
+        margin-right: 0;
+      }
+      @include small{
+        @include size(100%);
+      }
+      &:hover{
+        box-shadow: 15px 15px 0 #000;
+        transition: box-shadow 1s;
+        cursor: pointer;
+        img{
+          transform: scale(1.2);
+          transition: transform 1s;
+        }
+      }
+      img{
+        @include size(100%);
+        object-fit: cover;
+      }
+    }
+  }
+}
+.mask{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  @include size(100%);
+  background-color: rgba(0, 0, 0, .9);
+  display: none;
+}
+.container{
+  display: flex;
+  max-width: $max-width;
+  @include large{
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .leftInfo{
+    display: flex;
+    @include size(239px,auto);
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 50px;
+    @include large{
+      margin-right: 0;
+      text-align: center;
+    }
+    .num{
+      @include font(36px,$white);
+      span:first-child{
+        font-size: 72px;
+        font-weight: bold;
+      }
+    }
+    .description{
+      @include font(24px,$white);
+      span:first-child{
+        display: block;
+        margin-bottom: .5em;
+      }
+    }
+    .author{
+      @include font(16px,$white);
+    }
+  }
+  .lightBox{
+    position: relative;
+    flex: 1;
+    max-height: 650px;
+    // @include size(825px,550px);
+    border-radius: 10px;
+    border: 16px solid $white;
+    overflow: hidden;
+    img{
+      @include size(100%);
+      object-fit: cover;
+    }
+    @include large{
+      width: 80%;
+    }
+  }
+}
+i{
+  position: absolute;
+  color: $white;
+  text-shadow: 2px 2px 10px $black;
+  &.cross{
+    top: 10px;
+    right: 10px;
+  }
+  &.left{
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  &.right{
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
